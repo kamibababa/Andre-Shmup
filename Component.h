@@ -9,13 +9,13 @@ private:
 	static int _size;
 	static int genNewTypeID() { return _size++; }
 	template<typename T, typename T2, typename... TRest>
-	static vector<bool> getKey(vector<bool>& key)
+	static vector<bool>& getKey(vector<bool>& key)
 	{
 		key[getTypeID<T>()] = true;
 		return getKey<T2, TRest...>(key);
 	}
 	template<typename T>
-	static vector<bool> getKey(vector<bool>& key)
+	static vector<bool>& getKey(vector<bool>& key)
 	{
 		key[getTypeID<T>()] = true;
 		return key;
